@@ -18,9 +18,9 @@ Let A and B be repositories. Say you are merging A into B, and you want to prese
 **Reliability:** Especially critical when merging SDKs, shared libraries, or repos with sensitive audit requirements.
 
 
-### Installation 
+### Running 
 
-Run ```cargo install <https://github.com/yanxue06/git-subtree-audit>``` in your terminal 
+Run ```cargo install --git https://github.com/yanxue06/git-subtree-audit``` in your terminal 
 
 ### Usage
 
