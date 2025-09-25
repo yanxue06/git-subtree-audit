@@ -21,7 +21,7 @@ Let A and B be repositories. Say you are merging A into B, and you want to prese
 
 ### Installation 
 
-Run ```git subtree-audit``` in your terminal 
+Run ```cargo install git-subtree-audit``` in your terminal 
 
 ### Usage
 
