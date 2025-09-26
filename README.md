@@ -17,7 +17,7 @@ Let A and B be repositories. Say you are merging A into B, and you want to prese
 **Reliability:** Especially critical when merging SDKs, shared libraries, or repos with sensitive audit requirements.
 
 **Installation**
-Run cargo install --git https://github.com/yanxue06/git-subtree-audit in your terminal
+Run ```cargo install --git https://github.com/yanxue06/git-subtree-audit``` in your terminal
 
 **Usage**
 
@@ -27,6 +27,6 @@ For examples, if you have a repo A and a repo B and:
 
 repo A is the path of source repo you want to merge repo B is the target repo that contains a subtree copy of A. sdk/ → the path inside Repo B where Repo A was merged.
 
-In the root of repo B, run git subtree-audit <github-url-of-repo-A> . <path-to-merged-in-repo-relative-to-root>
+In the root of repo B, run ```git subtree-audit <github-url-of-repo-A> . <path-to-merged-in-repo-relative-to-root>```
 
-In this case <path-to-merged-in-repo-relative-to-root> would just be sdk
+In this case ```<path-to-merged-in-repo-relative-to-root>``` would just be ```sdk```
