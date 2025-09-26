@@ -97,12 +97,12 @@ pub fn get_remote_commit_count(repo_url: &str) -> Result<usize, String> {
         return Err(format!("Failed to clone repository: {}. Check URL and permissions.", repo_url));
     }
 
-    // Get the commit count from the cloned repo
+    // Get the commit count from the cloned repo (default branch only)
     let output = Command::new("git")
         .current_dir(temp_dir.path())
         .arg("rev-list")
-        .arg("--all")
         .arg("--count")
+        .arg("HEAD")
         .output()
         .map_err(|e| format!("Failed to execute git rev-list: {}", e))?;
 
