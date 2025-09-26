@@ -12,7 +12,9 @@ Let A and B be repositories. Say you are merging A into B, and you want to prese
 ### Why this matters
 
 **Confidence:** No need to trust manual inspection — the tool guarantees no history is lost. 
+
 **Productivity:** Reduce merge review time from hours (or days) to seconds.
+
 **Reliability:** Especially critical when merging SDKs, shared libraries, or repos with sensitive audit requirements.
 
 ### **Installation**
