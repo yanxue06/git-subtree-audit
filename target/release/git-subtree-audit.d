@@ -1,1 +1,0 @@
-/Users/yammy/Desktop/projects/git-subtree-audit/target/release/git-subtree-audit: /Users/yammy/Desktop/projects/git-subtree-audit/src/audit.rs /Users/yammy/Desktop/projects/git-subtree-audit/src/git.rs /Users/yammy/Desktop/projects/git-subtree-audit/src/main.rs
