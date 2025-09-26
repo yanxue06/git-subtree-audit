@@ -22,9 +22,14 @@ pub fn get_local_subtree_commit_count(subtree_path: &str) -> Result<usize, Strin
         ));
     }
 
-    let merge_commit_hash = String::from_utf8_lossy(&merge_commit_output.stdout).trim().to_string();
+    let merge_commit_hash = String::from_utf8_lossy(&merge_commit_output.stdout)
+        .trim()
+        .to_string();
     if merge_commit_hash.is_empty() {
-        return Err(format!("No git subtree merge commit found for path: {}", subtree_path));
+        return Err(format!(
+            "No git subtree merge commit found for path: {}",
+            subtree_path
+        ));
     }
 
     // Step 2: Resolve the second parent hash of the merge commit
@@ -42,9 +47,10 @@ pub fn get_local_subtree_commit_count(subtree_path: &str) -> Result<usize, Strin
         ));
     }
 
-    let second_parent_hash = String::from_utf8_lossy(&second_parent_output.stdout).trim().to_string();
+    let second_parent_hash = String::from_utf8_lossy(&second_parent_output.stdout)
+        .trim()
+        .to_string();
 
-    // Step 3: Count the ancestors of the second parent
     let count_output = Command::new("git")
         .arg("rev-list")
         .arg("--count")
@@ -60,7 +66,9 @@ pub fn get_local_subtree_commit_count(subtree_path: &str) -> Result<usize, Strin
         ));
     }
 
-    let count_str = String::from_utf8_lossy(&count_output.stdout).trim().to_string();
+    let count_str = String::from_utf8_lossy(&count_output.stdout)
+        .trim()
+        .to_string();
     let commit_count = count_str
         .parse::<usize>()
         .map_err(|e| format!("Failed to parse subtree commit count: {}", e))?;
@@ -68,36 +76,29 @@ pub fn get_local_subtree_commit_count(subtree_path: &str) -> Result<usize, Strin
     Ok(commit_count)
 }
 
-// TODO: Implement utility functions for interacting with Git.
-// This file should contain functions for:
-// - Getting the list of commits from a repository.
-// - Getting patch IDs for commits.
-// - Any other Git-related operations needed for the audit.
-// Consider using the `git2` crate for future, more advanced features.
-
 pub fn get_remote_commit_count(repo_url: &str) -> Result<usize, String> {
-    // Create a temporary directory for the clone
     let temp_dir = Builder::new()
         .prefix("git-subtree-audit-")
         .tempdir()
         .map_err(|e| format!("Failed to create temp dir: {}", e))?;
 
-    // Clone the repository into the temporary directory
     let clone_status = Command::new("git")
         .arg("clone")
-        .arg("--bare") // More efficient, no working copy needed
+        .arg("--bare") 
         .arg(repo_url)
         .arg(temp_dir.path())
-        .stdout(Stdio::null()) // Suppress success output
-        .stderr(Stdio::null()) // Suppress success output
+        .stdout(Stdio::null()) 
+        .stderr(Stdio::null()) 
         .status()
         .map_err(|e| format!("Failed to execute git clone: {}", e))?;
 
     if !clone_status.success() {
-        return Err(format!("Failed to clone repository: {}. Check URL and permissions.", repo_url));
+        return Err(format!(
+            "Failed to clone repository: {}. Check URL and permissions.",
+            repo_url
+        ));
     }
 
-    // Get the commit count from the cloned repo (default branch only)
     let output = Command::new("git")
         .current_dir(temp_dir.path())
         .arg("rev-list")
@@ -108,10 +109,7 @@ pub fn get_remote_commit_count(repo_url: &str) -> Result<usize, String> {
 
     if !output.status.success() {
         let error_message = String::from_utf8_lossy(&output.stderr);
-        return Err(format!(
-            "git rev-list failed: {}",
-            error_message
-        ));
+        return Err(format!("git rev-list failed: {}", error_message));
     }
 
     let count_str = String::from_utf8_lossy(&output.stdout).trim().to_string();

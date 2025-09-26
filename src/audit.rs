@@ -1,8 +1,8 @@
 #[derive(Debug, PartialEq)]
 pub enum AuditResult {
     Match,
-    SourceHasMore(usize), // Source has X more commits
-    SubtreeHasMore(usize), // Subtree has X more commits
+    SourceHasMore(usize), 
+    SubtreeHasMore(usize), 
 }
 
 pub fn compare_commit_counts(source_count: usize, subtree_count: usize) -> AuditResult {
@@ -14,4 +14,3 @@ pub fn compare_commit_counts(source_count: usize, subtree_count: usize) -> Audit
         AuditResult::SubtreeHasMore(subtree_count - source_count)
     }
 }
-
