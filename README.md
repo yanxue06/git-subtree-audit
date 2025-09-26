@@ -9,28 +9,24 @@ Let A and B be repositories. Say you are merging A into B, and you want to prese
 **git-subtree-audit** is a lightweight Git extension that verifies subtree merges automatically. Instead of manually counting or scanning thousands of commits, it codifies invariants about history preservation into a single CLI command.
 
 **Exact verification:** Ensures every commit from repo A exists in repo B’s subtree history.
-**Simple usage:** 
-Just point it to your source repo, target repo, and the subtree path — the tool handles the rest.
 
 ### Why this matters
 
-**Confidence:** No need to trust manual inspection — the tool guarantees no history is lost.
+**Confidence:** No need to trust manual inspection — the tool guarantees no history is lost. 
 **Productivity:** Reduce merge review time from hours (or days) to seconds.
 **Reliability:** Especially critical when merging SDKs, shared libraries, or repos with sensitive audit requirements.
 
+**Installation**
+Run cargo install --git https://github.com/yanxue06/git-subtree-audit in your terminal
 
-### Running 
+**Usage**
 
-Run ```cargo install --git https://github.com/yanxue06/git-subtree-audit``` in your terminal 
+Just point it to your source repo, target repo, and the subtree path — the tool handles the rest.
 
-### Usage
+For examples, if you have a repo A and a repo B and:
 
-Let’s say you have two repos:
+repo A is the path of source repo you want to merge repo B is the target repo that contains a subtree copy of A. sdk/ → the path inside Repo B where Repo A was merged.
 
-repo A → the path of source repo you want to merge.
+In the root of repo B, run git subtree-audit <github-url-of-repo-A> . <path-to-merged-in-repo-relative-to-root>
 
-repo B → the target repo that contains a subtree copy of A.
-
-sdk/ → the path inside Repo B where Repo A was merged.
-
-In the root of repo B, run ```git subtree-audit <github-url-of-repo-A> . <path-to-merged-in-repo-relative-to-root>```
+In this case <path-to-merged-in-repo-relative-to-root> would just be sdk
