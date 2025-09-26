@@ -9,7 +9,8 @@ Let A and B be repositories. Say you are merging A into B, and you want to prese
 **git-subtree-audit** is a lightweight Git extension that verifies subtree merges automatically. Instead of manually counting or scanning thousands of commits, it codifies invariants about history preservation into a single CLI command.
 
 **Exact verification:** Ensures every commit from repo A exists in repo B’s subtree history.
-**Simple usage:** Just point it to your source repo, target repo, and the subtree path — the tool handles the rest.
+**Simple usage:** 
+Just point it to your source repo, target repo, and the subtree path — the tool handles the rest.
 
 ### Why this matters
 
