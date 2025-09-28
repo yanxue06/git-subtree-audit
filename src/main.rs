@@ -52,17 +52,17 @@ fn main() {
 
     match audit_result {
         audit::AuditResult::Match => {
-            println!("✅ Success: Commit counts match!");
+            println!("Success: Commit counts match!");
         }
         audit::AuditResult::SourceHasMore(diff) => {
             println!(
-                "❌ Failure: Source repository has {} more commits than the subtree.",
+                "Failure: Source repository has {} more commits than the subtree.",
                 diff
             );
         }
         audit::AuditResult::SubtreeHasMore(diff) => {
             println!(
-                "⚠️ Warning: Subtree has {} more commits than the source repository.",
+                "Warning: Subtree has {} more commits than the source repository.",
                 diff
             );
         }
