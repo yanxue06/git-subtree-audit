@@ -15,8 +15,24 @@
       {
         "assets": [
           {
-            "path": "target/release/git-subtree-audit",
+            "path": "binaries/git-subtree-audit-linux-x86_64/git-subtree-audit",
+            "name": "git-subtree-audit-linux-x86_64",
             "label": "git-subtree-audit-linux-x86_64"
+          },
+          {
+            "path": "binaries/git-subtree-audit-macos-x86_64/git-subtree-audit",
+            "name": "git-subtree-audit-macos-x86_64",
+            "label": "git-subtree-audit-macos-x86_64"
+          },
+          {
+            "path": "binaries/git-subtree-audit-macos-arm64/git-subtree-audit",
+            "name": "git-subtree-audit-macos-arm64",
+            "label": "git-subtree-audit-macos-arm64"
+          },
+          {
+            "path": "binaries/git-subtree-audit-windows-x86_64.exe/git-subtree-audit.exe",
+            "name": "git-subtree-audit-windows-x86_64.exe",
+            "label": "git-subtree-audit-windows-x86_64.exe"
           }
         ]
       }

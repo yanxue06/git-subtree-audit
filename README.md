@@ -20,7 +20,44 @@ Instead of manually counting or scanning thousands of commits, it codifies invar
 **Reliability:** Especially critical when merging SDKs, shared libraries, or repos with sensitive audit requirements.
 
 ### **Installation**
-Run ```cargo install --git https://github.com/yanxue06/git-subtree-audit``` in your terminal
+
+#### Option 1: Download Pre-built Binary (Recommended)
+
+Download the latest release from [GitHub Releases](https://github.com/yanxue06/git-subtree-audit/releases).
+
+**macOS (Apple Silicon M1/M2/M3)**
+```bash
+curl -L https://github.com/yanxue06/git-subtree-audit/releases/latest/download/git-subtree-audit-macos-arm64 -o git-subtree-audit
+chmod +x git-subtree-audit
+sudo mv git-subtree-audit /usr/local/bin/
+```
+
+**macOS (Intel)**
+```bash
+curl -L https://github.com/yanxue06/git-subtree-audit/releases/latest/download/git-subtree-audit-macos-x86_64 -o git-subtree-audit
+chmod +x git-subtree-audit
+sudo mv git-subtree-audit /usr/local/bin/
+```
+
+**Linux**
+```bash
+curl -L https://github.com/yanxue06/git-subtree-audit/releases/latest/download/git-subtree-audit-linux-x86_64 -o git-subtree-audit
+chmod +x git-subtree-audit
+sudo mv git-subtree-audit /usr/local/bin/
+```
+
+**Windows**
+```powershell
+Download from: https://github.com/yanxue06/git-subtree-audit/releases/latest/download/git-subtree-audit-windows-x86_64.exe
+# Save to a folder in your PATH, or add the folder to PATH
+```
+
+#### Option 2: Install from Cargo
+
+```bash
+cargo install --git https://github.com/yanxue06/git-subtree-audit
+
+```
 
 ### **Usage**
 
