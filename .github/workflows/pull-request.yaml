@@ -35,4 +35,4 @@ jobs:
           gh pr comment $PR_NUMBER --body "> Auto-merge enabled for this Renovate PR. Will merge automatically once checks pass."
           echo "✅ Comment added"
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
