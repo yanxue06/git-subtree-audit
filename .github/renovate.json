@@ -3,12 +3,16 @@
   "extends": [
     "config:recommended"
   ],
+  "dependencyDashboard": true,
+  "dependencyDashboardApproval": false,
+  "platformAutomerge": true,
   "labels": [
     "dependencies"
   ],
   "assignees": [
     "yanxue06"
   ],
+  "prCreation": "immediate",
   "packageRules": [
     {
       "matchUpdateTypes": [
