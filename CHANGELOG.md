@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/yanxue06/git-subtree-audit/compare/v1.0.0...v1.1.0) (2025-10-13)
+
+
+### Features
+
+* edit release configs to support more devices ([1c2798b](https://github.com/yanxue06/git-subtree-audit/commit/1c2798b548dfe2d70645df2dee7b100873ea688b))
+
 # 1.0.0 (2025-10-08)
 
 
