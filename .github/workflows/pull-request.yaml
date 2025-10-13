@@ -12,56 +12,24 @@ jobs:
   auto-merge:
     runs-on: ubuntu-latest
     if: github.actor == 'renovate[bot]'
+    
     steps:
-      - name: Assign PR to yanxue06
-        uses: actions/github-script@v7
-        with:
-          script: |
-            await github.rest.issues.addAssignees({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              assignees: ['yanxue06']
-            });
-
-      - name: Enable auto-merge with rebase
-        uses: actions/github-script@v7
-        with:
-          script: |
-            await github.rest.pulls.updateBranch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.issue.number
-            });
-
-            const { data: pullRequest } = await github.rest.pulls.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.issue.number
-            });
-
-            await github.rest.graphql(`
-              mutation {
-                enablePullRequestAutoMerge(input: {
-                  pullRequestId: "${pullRequest.node_id}",
-                  mergeMethod: REBASE
-                }) {
-                  pullRequest {
-                    autoMergeRequest {
-                      enabledAt
-                    }
-                  }
-                }
-              }
-            `);
-
-      - name: Add comment
-        uses: actions/github-script@v7
-        with:
-          script: |
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body: '> Auto-merge enabled for this Renovate PR. Will merge automatically once checks pass.'
-            });
+      - name: Auto-merge Renovate PR
+        run: |
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          
+          echo "📝 Processing Renovate PR #$PR_NUMBER"
+          
+          # Assign to yourself
+          gh pr edit $PR_NUMBER --add-assignee yanxue06
+          echo "✅ Assigned to yanxue06"
+          
+          # Enable auto-merge with rebase
+          gh pr merge $PR_NUMBER --auto --rebase
+          echo "✅ Auto-merge enabled (rebase)"
+          
+          # Add comment
+          gh pr comment $PR_NUMBER --body "> Auto-merge enabled for this Renovate PR. Will merge automatically once checks pass."
+          echo "✅ Comment added"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
